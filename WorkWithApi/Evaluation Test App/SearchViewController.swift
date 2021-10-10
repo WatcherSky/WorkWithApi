@@ -15,6 +15,7 @@ class SearchViewController: UIViewController {
     private var editedSearchText = ""  //Use edit search text to escape nil when making request with space
     private let searchController = UISearchController(searchResultsController: nil)
     private var searchArray: [String] = [] //array to save to UserDefaults for history tab
+    private var alternativeArray = [""] //alternative to get rid of force unwrap, dont know just add this word^ not empty string, looks good)
     private var resultCount = 0
     private var arrayOfDataStruct = [Results]()
     private var arrayOfDataStructSaved = [Results]()
@@ -51,11 +52,7 @@ class SearchViewController: UIViewController {
     
     private func isAppAlreadyLaunchedOnce() {
         if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
-            if searchArray.isEmpty {
-                searchArray = []
-            } else {
-                searchArray = defaults.stringArray(forKey: "array")!
-            }
+            searchArray = defaults.stringArray(forKey: "array") ?? alternativeArray
             // not first Launch
         } else {
             defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
