@@ -78,9 +78,7 @@ extension SearchViewController: UISearchBarDelegate {
         networkManager.getAlbums(urlString: urlString) { (resultsData) in  //get Data, parse it, then pass it to custom array and sort
             guard let resultsData = resultsData else { return }                                                         //alphabetically
             self.resultsData = resultsData
-            
             self.resultCount = resultsData.results?.count ?? 0
-            
             for results in 0..<self.resultCount  {
                 self.arrayOfDataStruct.append(resultsData.results![results])
             }
