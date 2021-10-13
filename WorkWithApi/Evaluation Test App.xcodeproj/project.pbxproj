@@ -14,6 +14,7 @@
 		E76CA166270B09FD002D0635 /* HistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76CA165270B09FD002D0635 /* HistoryCollectionViewCell.swift */; };
 		E76CA174270B41EA002D0635 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76CA173270B41EA002D0635 /* SearchCollectionViewCell.swift */; };
 		E76CA180270B6BD4002D0635 /* AlbumInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76CA17F270B6BD4002D0635 /* AlbumInfoViewController.swift */; };
+		E76CA1C927169CBC002D0635 /* Evaluation_Test_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76CA1C827169CBC002D0635 /* Evaluation_Test_AppTests.swift */; };
 		E7AB626527089CEB007600DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB626427089CEB007600DD /* AppDelegate.swift */; };
 		E7AB626727089CEB007600DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB626627089CEB007600DD /* SceneDelegate.swift */; };
 		E7AB626C27089CEB007600DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7AB626A27089CEB007600DD /* Main.storyboard */; };
@@ -24,6 +25,16 @@
 		E7AB62832708BA9A007600DD /* HistorySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB62822708BA9A007600DD /* HistorySearchViewController.swift */; };
 		FA2083426F520F391271620E /* Pods_Evaluation_Test_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 760EDE0EA0F726CCC7EE7E71 /* Pods_Evaluation_Test_App.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E76CA1CB27169CBC002D0635 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7AB625927089CEB007600DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7AB626027089CEB007600DD;
+			remoteInfo = "Evaluation Test App";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4B8AD732B75F7405F62E3809 /* Pods-Evaluation Test App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Evaluation Test App.release.xcconfig"; path = "Target Support Files/Pods-Evaluation Test App/Pods-Evaluation Test App.release.xcconfig"; sourceTree = "<group>"; };
@@ -36,6 +47,9 @@
 		E76CA165270B09FD002D0635 /* HistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		E76CA173270B41EA002D0635 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		E76CA17F270B6BD4002D0635 /* AlbumInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfoViewController.swift; sourceTree = "<group>"; };
+		E76CA1C627169CBC002D0635 /* Evaluation Test AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Evaluation Test AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E76CA1C827169CBC002D0635 /* Evaluation_Test_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evaluation_Test_AppTests.swift; sourceTree = "<group>"; };
+		E76CA1CA27169CBC002D0635 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7AB626127089CEB007600DD /* Evaluation Test App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Evaluation Test App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7AB626427089CEB007600DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7AB626627089CEB007600DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +63,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E76CA1C327169CBC002D0635 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7AB625E27089CEB007600DD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -113,10 +134,20 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
+		E76CA1C727169CBC002D0635 /* Evaluation Test AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				E76CA1C827169CBC002D0635 /* Evaluation_Test_AppTests.swift */,
+				E76CA1CA27169CBC002D0635 /* Info.plist */,
+			);
+			path = "Evaluation Test AppTests";
+			sourceTree = "<group>";
+		};
 		E7AB625827089CEB007600DD = {
 			isa = PBXGroup;
 			children = (
 				E7AB626327089CEB007600DD /* Evaluation Test App */,
+				E76CA1C727169CBC002D0635 /* Evaluation Test AppTests */,
 				E7AB626227089CEB007600DD /* Products */,
 				9297E0A52EE363BB79E18C90 /* Pods */,
 				557D58B6230D160B8A2D616F /* Frameworks */,
@@ -127,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				E7AB626127089CEB007600DD /* Evaluation Test App.app */,
+				E76CA1C627169CBC002D0635 /* Evaluation Test AppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,6 +185,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E76CA1C527169CBC002D0635 /* Evaluation Test AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E76CA1CF27169CBC002D0635 /* Build configuration list for PBXNativeTarget "Evaluation Test AppTests" */;
+			buildPhases = (
+				E76CA1C227169CBC002D0635 /* Sources */,
+				E76CA1C327169CBC002D0635 /* Frameworks */,
+				E76CA1C427169CBC002D0635 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E76CA1CC27169CBC002D0635 /* PBXTargetDependency */,
+			);
+			name = "Evaluation Test AppTests";
+			productName = "Evaluation Test AppTests";
+			productReference = E76CA1C627169CBC002D0635 /* Evaluation Test AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E7AB626027089CEB007600DD /* Evaluation Test App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7AB627527089CF1007600DD /* Build configuration list for PBXNativeTarget "Evaluation Test App" */;
@@ -181,6 +231,10 @@
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					E76CA1C527169CBC002D0635 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = E7AB626027089CEB007600DD;
+					};
 					E7AB626027089CEB007600DD = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -200,11 +254,19 @@
 			projectRoot = "";
 			targets = (
 				E7AB626027089CEB007600DD /* Evaluation Test App */,
+				E76CA1C527169CBC002D0635 /* Evaluation Test AppTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E76CA1C427169CBC002D0635 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7AB625F27089CEB007600DD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -260,6 +322,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E76CA1C227169CBC002D0635 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E76CA1C927169CBC002D0635 /* Evaluation_Test_AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7AB625D27089CEB007600DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -281,6 +351,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		E76CA1CC27169CBC002D0635 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7AB626027089CEB007600DD /* Evaluation Test App */;
+			targetProxy = E76CA1CB27169CBC002D0635 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		E7AB626A27089CEB007600DD /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -301,6 +379,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E76CA1CD27169CBC002D0635 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4LHC6GRDGA;
+				INFOPLIST_FILE = "Evaluation Test AppTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dreamer.Evaluation-Test-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Evaluation Test App.app/Evaluation Test App";
+			};
+			name = Debug;
+		};
+		E76CA1CE27169CBC002D0635 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4LHC6GRDGA;
+				INFOPLIST_FILE = "Evaluation Test AppTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dreamer.Evaluation-Test-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Evaluation Test App.app/Evaluation Test App";
+			};
+			name = Release;
+		};
 		E7AB627327089CF1007600DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -426,7 +544,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4LHC6GRDGA;
 				INFOPLIST_FILE = "Evaluation Test App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -447,7 +565,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4LHC6GRDGA;
 				INFOPLIST_FILE = "Evaluation Test App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,6 +580,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E76CA1CF27169CBC002D0635 /* Build configuration list for PBXNativeTarget "Evaluation Test AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E76CA1CD27169CBC002D0635 /* Debug */,
+				E76CA1CE27169CBC002D0635 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E7AB625C27089CEB007600DD /* Build configuration list for PBXProject "Evaluation Test App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
