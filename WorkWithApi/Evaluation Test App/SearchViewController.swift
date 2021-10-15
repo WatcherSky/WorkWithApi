@@ -75,7 +75,7 @@ extension SearchViewController: UISearchBarDelegate {
         
         let urlString = "https://itunes.apple.com/search?term=\(editedSearchText)&media=music&entity=album" //make request  and sort albums
         
-        networkManager.getAlbums(urlString: urlString) { (resultsData) in  //get Data, parse it, then pass it to custom array and sort
+        networkManager.getAlbums(urlString: urlString) { [unowned self] (resultsData) in  //get Data, parse it, then pass it to custom array and sort
             guard let resultsData = resultsData else { return }                                                         //alphabetically
             self.resultsData = resultsData
             self.resultCount = resultsData.results?.count ?? 0
