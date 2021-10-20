@@ -15,7 +15,7 @@ class SearchViewController: UIViewController {
     private var editedSearchText = ""  //Use edit search text to escape nil when making request with space
     private let searchController = UISearchController(searchResultsController: nil)
     private var searchArray: [String] = [] //array to save to UserDefaults for history tab
-    private var alternativeArray = [""] //alternative to get rid of force unwrap, dont know just add this word^ not empty string, looks good)
+    private var history = UserDefaults.standard.stringArray(forKey: "array")
     private var resultCount = 0
     private var arrayOfDataStruct = [Results]()
     private var arrayOfDataStructSaved = [Results]()
@@ -27,7 +27,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         setupSearch()
         setupCollectionView()
-        isAppAlreadyLaunchedOnce()
+//        isAppAlreadyLaunchedOnce()
     }
     
     //MARK: - Private methods
@@ -49,16 +49,21 @@ class SearchViewController: UIViewController {
         }
         return sortedArrayScore
     }
-    
-    private func isAppAlreadyLaunchedOnce() {
-        if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
-            searchArray = defaults.stringArray(forKey: "array") ?? alternativeArray
-            // not first Launch
-        } else {
-            defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
-            //first Launch
+        
+    private func saveHistory(historyWork: String) {
+        history = UserDefaults.standard.stringArray(forKey: "array")
+        if let history = history {
+            searchArray = history
         }
+        searchArray.append(historyWork)
+        if searchArray.count > 10 {
+            searchArray.removeFirst()
+        }
+        defaults.removeObject(forKey: "array")
+        defaults.set(searchArray, forKey: "array")
+        
     }
+    
 }
 //MARK: - Extensions
 extension SearchViewController: UISearchBarDelegate {
@@ -66,13 +71,7 @@ extension SearchViewController: UISearchBarDelegate {
         guard let text = searchBar.text else { return  }
         editedSearchText = text.replacingOccurrences(of: " ", with: "+")
         
-        searchArray.append(text)  //append in string array
-        if searchArray.count > 10 {   //limit for history. Can be set as you wish (15, 20, no limit)
-            searchArray.removeFirst()
-        }
-        defaults.removeObject(forKey: "array") // remove old array
-        defaults.set(searchArray, forKey: "array") // add new array
-       
+        saveHistory(historyWork: text)
         activityIndicator.startAnimating()
         
         let urlString = "https://itunes.apple.com/search?term=\(editedSearchText)&media=music&entity=album" //make request  and sort albums

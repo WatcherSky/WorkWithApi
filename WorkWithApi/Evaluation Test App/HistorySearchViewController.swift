@@ -18,7 +18,6 @@ class HistorySearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         reload()
         setupTableView()
     }
