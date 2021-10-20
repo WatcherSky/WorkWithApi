@@ -20,11 +20,11 @@ class SearchViewController: UIViewController {
     private var arrayOfDataStruct = [Results]()
     private var arrayOfDataStructSaved = [Results]()
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupSearch()
         setupCollectionView()
         isAppAlreadyLaunchedOnce()
@@ -72,11 +72,12 @@ extension SearchViewController: UISearchBarDelegate {
         }
         defaults.removeObject(forKey: "array") // remove old array
         defaults.set(searchArray, forKey: "array") // add new array
+       
+        activityIndicator.startAnimating()
         
         let urlString = "https://itunes.apple.com/search?term=\(editedSearchText)&media=music&entity=album" //make request  and sort albums
-        
         networkManager.getAlbums(urlString: urlString) { [unowned self] (resultsData) in  //get Data, parse it, then pass it to custom array and sort
-            guard let resultsData = resultsData else { return }                                                         //alphabetically
+            guard let resultsData = resultsData else { return }
             self.resultsData = resultsData
             self.resultCount = resultsData.results?.count ?? 0
             for results in 0..<self.resultCount  {
@@ -85,8 +86,9 @@ extension SearchViewController: UISearchBarDelegate {
             self.arrayOfDataStruct = self.sortAlbumsByName(array: self.arrayOfDataStruct)
             self.arrayOfDataStructSaved = self.arrayOfDataStruct
             self.arrayOfDataStruct = []
-            
             self.collectionView.reloadData()
+            activityIndicator.stopAnimating()
+            activityIndicator.isHidden = true
         }
     }
 }
@@ -124,8 +126,3 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }
-
-//MARK: - Note from Author
-//Описание при переходе экрана можно понять двумя способами: Первый, как я сделал, и второй, при нажатии на альбом в SearchVC будет переход на результат в двух местах: Здесь, и в History
-// Но логичнее сделать так, как я и сделал, что ваш HR и подтвердил
-//Надеюсь что все в порядке, спасибо.
