@@ -46,7 +46,7 @@ class AlbumsViewController: UIViewController {
         
         let urlString = "https://itunes.apple.com/search?term=\(editedSearchText)&media=music&entity=album"
         
-        networkManager.getAlbums(urlString: urlString) { (resultsData) in
+        networkManager.getAlbums(urlString: urlString) { [unowned self] (resultsData) in
             guard let resultsData = resultsData else { return }
             self.resultsData = resultsData
             self.resultCount = resultsData.results?.count ?? 0

@@ -11,6 +11,7 @@ class AlbumInfoViewController: UIViewController {
     //MARK: - Properties
     private let networkManager = NetworkManager()
     private var resultsData: ResultsData? = nil
+    private var headerForTable = "AlbumSongs"
     var results: Results?
     var collectionId: Int = 0 //get collection id from previous screen to make request (didnt get from results to make it more simple) We can see id
     @IBOutlet private weak var tableView: UITableView!
@@ -32,15 +33,23 @@ class AlbumInfoViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
     }
     
     private func setupLabels() { //setup labels name
+        title = "AlbumInformation"
         guard let albumNameText = results?.collectionName else { return }
         guard let artistNameText = results?.artistName else { return }
-        guard let releaseDateText = results?.releaseDate else { return }
+       // guard let releaseDateText = results?.releaseDate else { return }
+        
         albumNameLabel.text = "AlbumName: \(albumNameText)"
         artistNameLabel.text = "ArtistName: \(artistNameText)"
-        releaseDateLabel.text = "ReleaseDate: \(releaseDateText)"
+       // releaseDateLabel.text = "ReleaseDate: \(releaseDateText)"
+    }
+    
+    
+    private func setupReleaseDate() {
+        
     }
     
     private func setupLabelPosition() {  //setup positions
@@ -52,7 +61,7 @@ class AlbumInfoViewController: UIViewController {
     
     private func getSongs(collectionId: Int) { //make request by collection id from previous screen
         let urlId = "https://itunes.apple.com/lookup?id=\(collectionId)&entity=song"
-        networkManager.getSongs(urlString: urlId) { (resultsData) in
+        networkManager.getSongs(urlString: urlId) { [unowned self] (resultsData) in
             guard let resultsData = resultsData else { return }
             self.resultsData = resultsData
             self.tableView.reloadData()
@@ -71,5 +80,9 @@ extension AlbumInfoViewController: UITableViewDelegate, UITableViewDataSource {
         let song = resultsData?.results?[indexPath.row]
         cell.textLabel?.text = song?.trackName
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return headerForTable
     }
 }

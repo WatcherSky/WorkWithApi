@@ -58,6 +58,7 @@ extension HistorySearchViewController: UITableViewDelegate, UITableViewDataSourc
         if let labelText = array?[indexPath.row] {
             albumsViewController.searchByHistoryString = labelText
         }
+        tableView.deselectRow(at: indexPath, animated: true)
         navigationController?.pushViewController(albumsViewController, animated: true)
     }
 }

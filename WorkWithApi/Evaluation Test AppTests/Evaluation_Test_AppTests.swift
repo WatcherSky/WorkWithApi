@@ -21,7 +21,7 @@ class Evaluation_Test_AppTests: XCTestCase {
     }
 
     func testForJsonGetData() throws { //Test if data from json isnt Nil
-        networkManager.getAlbums(urlString: urlStringRequest) { (resultsData) in
+        networkManager.getAlbums(urlString: urlStringRequest) { [unowned self] (resultsData) in
             guard let resultsData = resultsData else { return }
             self.resultsData = resultsData
             XCTAssertNotNil(resultsData)

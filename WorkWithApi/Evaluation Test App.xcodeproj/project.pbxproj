@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E70C6F0227268E1D008B2E20 /* HistoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70C6F0127268E1D008B2E20 /* HistoryDetailsViewController.swift */; };
 		E76CA11E2709C85D002D0635 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76CA11D2709C85D002D0635 /* NetworkManager.swift */; };
 		E76CA1222709F613002D0635 /* UIViewController + StoryboardInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76CA1212709F613002D0635 /* UIViewController + StoryboardInit.swift */; };
 		E76CA1272709FA72002D0635 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76CA1262709FA72002D0635 /* AlbumsViewController.swift */; };
@@ -40,6 +41,7 @@
 		4B8AD732B75F7405F62E3809 /* Pods-Evaluation Test App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Evaluation Test App.release.xcconfig"; path = "Target Support Files/Pods-Evaluation Test App/Pods-Evaluation Test App.release.xcconfig"; sourceTree = "<group>"; };
 		6705FFBC37D791F168A74A87 /* Pods-Evaluation Test App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Evaluation Test App.debug.xcconfig"; path = "Target Support Files/Pods-Evaluation Test App/Pods-Evaluation Test App.debug.xcconfig"; sourceTree = "<group>"; };
 		760EDE0EA0F726CCC7EE7E71 /* Pods_Evaluation_Test_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Evaluation_Test_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E70C6F0127268E1D008B2E20 /* HistoryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailsViewController.swift; sourceTree = "<group>"; };
 		E76CA11D2709C85D002D0635 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E76CA1212709F613002D0635 /* UIViewController + StoryboardInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + StoryboardInit.swift"; sourceTree = "<group>"; };
 		E76CA1262709FA72002D0635 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				E76CA1262709FA72002D0635 /* AlbumsViewController.swift */,
 				E76CA12A2709FC81002D0635 /* JsonDataAndManager */,
 				E7AB626A27089CEB007600DD /* Main.storyboard */,
+				E70C6F0127268E1D008B2E20 /* HistoryDetailsViewController.swift */,
 				E76CA173270B41EA002D0635 /* SearchCollectionViewCell.swift */,
 				E76CA165270B09FD002D0635 /* HistoryCollectionViewCell.swift */,
 				E76CA17C270B68BA002D0635 /* SupportingFiles */,
@@ -339,6 +342,7 @@
 				E76CA174270B41EA002D0635 /* SearchCollectionViewCell.swift in Sources */,
 				E76CA1222709F613002D0635 /* UIViewController + StoryboardInit.swift in Sources */,
 				E76CA11E2709C85D002D0635 /* NetworkManager.swift in Sources */,
+				E70C6F0227268E1D008B2E20 /* HistoryDetailsViewController.swift in Sources */,
 				E7AB62802708BA8D007600DD /* SearchViewController.swift in Sources */,
 				E7AB626527089CEB007600DD /* AppDelegate.swift in Sources */,
 				E7AB627D2708A1A3007600DD /* ResultsData.swift in Sources */,
