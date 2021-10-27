@@ -34,7 +34,7 @@ class HistorySearchViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(reloadTableView), userInfo: nil, repeats: true)
     }
     
-    @objc func reloadTableView() {
+    @objc private func reloadTableView() {
         array = UserDefaults.standard.stringArray(forKey: "array")
         tableView.reloadData()
     }
