@@ -27,7 +27,6 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         setupSearch()
         setupCollectionView()
-//        isAppAlreadyLaunchedOnce()
     }
     
     //MARK: - Private methods
