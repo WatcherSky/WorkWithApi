@@ -63,7 +63,7 @@ class AlbumsViewController: UIViewController {
     }
 }
 
-//MARK: - Extensions
+    //MARK: - Extensions
 extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayOfDataStructSaved.count

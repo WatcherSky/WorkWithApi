@@ -12,6 +12,7 @@ class AlbumInfoViewController: UIViewController {
     private let networkManager = NetworkManager()
     private var resultsData: ResultsData? = nil
     private var headerForTable = "AlbumSongs"
+    private var dateFormatter = ISO8601DateFormatter()
     var results: Results?
     var collectionId: Int = 0 //get collection id from previous screen to make request (didnt get from results to make it more simple) We can see id
     @IBOutlet private weak var tableView: UITableView!
@@ -26,6 +27,7 @@ class AlbumInfoViewController: UIViewController {
         setupTableView()
         setupLabels()
         getSongs(collectionId: collectionId)
+        setupReleaseDate()
     }
     
     //MARK: - Private methods
@@ -40,16 +42,19 @@ class AlbumInfoViewController: UIViewController {
         title = "AlbumInformation"
         guard let albumNameText = results?.collectionName else { return }
         guard let artistNameText = results?.artistName else { return }
-       // guard let releaseDateText = results?.releaseDate else { return }
-        
+
         albumNameLabel.text = "AlbumName: \(albumNameText)"
         artistNameLabel.text = "ArtistName: \(artistNameText)"
-       // releaseDateLabel.text = "ReleaseDate: \(releaseDateText)"
     }
     
     
-    private func setupReleaseDate() {
-        
+    private func setupReleaseDate() { //formatted release date with dateFormatter
+        guard let releaseDateText = results?.releaseDate else { return }
+        guard let getDateFromJson = dateFormatter.date(from: releaseDateText) else { return }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let changedDateFromJson = dateFormatter.string(from: getDateFromJson)
+        releaseDateLabel.text = "ReleaseDate: \(changedDateFromJson)"
     }
     
     private func setupLabelPosition() {  //setup positions
