@@ -28,7 +28,7 @@ class NetworkManager {
                 response(nil)
             }
     }
-    }
+}
     
     func getSongs(urlString: String, response: @escaping (ResultsData?) -> Void) {
         networkRequest.request(urlString: urlString) { (result) in
@@ -47,6 +47,5 @@ class NetworkManager {
             }
         }
     }
-    // Same for Songs. We can use 1 method, i used 2 to separate their (functions) name
+}    // Same for Songs. We can use 1 method, i used 2 to separate their (functions) name
 
-}

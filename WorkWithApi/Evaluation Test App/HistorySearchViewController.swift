@@ -29,7 +29,6 @@ class HistorySearchViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
-
     private func reload() {
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(reloadTableView), userInfo: nil, repeats: true)
     }
@@ -43,7 +42,9 @@ class HistorySearchViewController: UIViewController {
 //MARK: - Extensions
 extension HistorySearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let array = array else { return 0 }
+        guard let array = array else {
+            return 0
+        }
         return array.count
     }
     

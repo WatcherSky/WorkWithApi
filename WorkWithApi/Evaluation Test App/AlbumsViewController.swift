@@ -33,7 +33,7 @@ class AlbumsViewController: UIViewController {
         collectionView.dataSource = self
     }
     
-    private func sortAlbumsByName(array: [Results]) -> [Results]{ //sort Albums by name
+    private func sortAlbumsByName(array: [Results]) -> [Results] { //sort Albums by name
         let sortedArrayScore = array.sorted { (s1: Results, s2: Results) -> Bool in
             return s1.collectionName! < s2.collectionName!
         }
@@ -47,7 +47,9 @@ class AlbumsViewController: UIViewController {
         let urlString = "https://itunes.apple.com/search?term=\(editedSearchText)&media=music&entity=album"
         
         networkManager.getAlbums(urlString: urlString) { [unowned self] (resultsData) in
-            guard let resultsData = resultsData else { return }
+            guard let resultsData = resultsData else {
+                return
+            }
             self.resultsData = resultsData
             self.resultCount = resultsData.results?.count ?? 0
             
@@ -63,7 +65,7 @@ class AlbumsViewController: UIViewController {
     }
 }
 
-    //MARK: - Extensions
+//MARK: - Extensions
 extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayOfDataStructSaved.count

@@ -25,6 +25,8 @@ class SearchViewController: UIViewController {
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        activityIndicator.isHidden = true
         setupSearch()
         setupCollectionView()
     }
@@ -48,7 +50,7 @@ class SearchViewController: UIViewController {
         }
         return sortedArrayScore
     }
-        
+    
     private func saveHistory(historyWork: String) {
         history = UserDefaults.standard.stringArray(forKey: "array")
         if let history = history {
@@ -60,22 +62,25 @@ class SearchViewController: UIViewController {
         }
         defaults.removeObject(forKey: "array")
         defaults.set(searchArray, forKey: "array")
-        
     }
-    
 }
 //MARK: - Extensions
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {        
-        guard let text = searchBar.text else { return  }
+        guard let text = searchBar.text else {
+            return
+        }
         editedSearchText = text.replacingOccurrences(of: " ", with: "+")
         
         saveHistory(historyWork: text)
+        activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
         let urlString = "https://itunes.apple.com/search?term=\(editedSearchText)&media=music&entity=album" //make request  and sort albums
         networkManager.getAlbums(urlString: urlString) { [unowned self] (resultsData) in  //get Data, parse it, then pass it to custom array and sort
-            guard let resultsData = resultsData else { return }
+            guard let resultsData = resultsData else {
+                return
+            }
             self.resultsData = resultsData
             self.resultCount = resultsData.results?.count ?? 0
             for results in 0..<self.resultCount  {
