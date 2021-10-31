@@ -10,7 +10,6 @@ import XCTest
 
 class Evaluation_Test_AppTests: XCTestCase {
    private  var resultsData: ResultsData?
-   private  var networkManager = NetworkManager()
    private  let urlStringRequest = "https://itunes.apple.com/search?term=Happier&media=music&entity=album"
     
     override func setUpWithError() throws {
@@ -21,7 +20,7 @@ class Evaluation_Test_AppTests: XCTestCase {
     }
 
     func testForJsonGetData() throws { //Test if data from json isnt Nil
-        networkManager.getAlbums(urlString: urlStringRequest) { [unowned self] (resultsData) in
+        NetworkManager.shared.getAlbums(urlString: urlStringRequest) { [unowned self] (resultsData) in
             guard let resultsData = resultsData else { return }
             self.resultsData = resultsData
             XCTAssertNotNil(resultsData)
