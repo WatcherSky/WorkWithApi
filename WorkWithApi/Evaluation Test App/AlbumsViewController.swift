@@ -10,14 +10,12 @@ import UIKit
 
 class AlbumsViewController: UIViewController {
     //MARK: - Properties
-    private let networkManager = NetworkManager()
+    @IBOutlet private weak var collectionView: UICollectionView!
+    var searchByHistoryString: String = ""  //search by string from table view history (this property get data from historyVC)
     private var resultsData: ResultsData? = nil
     private var resultCount = 0
     private var arrayOfDataStruct = [Results]()
     private var arrayOfDataStructSaved = [Results]()
-    
-    @IBOutlet private weak var collectionView: UICollectionView!
-    var searchByHistoryString: String = ""  //search by string from table view history (this property get data from historyVC)
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
@@ -46,7 +44,7 @@ class AlbumsViewController: UIViewController {
         
         let urlString = "https://itunes.apple.com/search?term=\(editedSearchText)&media=music&entity=album"
         
-        networkManager.getAlbums(urlString: urlString) { [unowned self] (resultsData) in
+        NetworkManager.shared.getAlbums(urlString: urlString) { [unowned self] (resultsData) in
             guard let resultsData = resultsData else {
                 return
             }
@@ -68,7 +66,7 @@ class AlbumsViewController: UIViewController {
 //MARK: - Extensions
 extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayOfDataStructSaved.count
+        arrayOfDataStructSaved.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -88,14 +86,14 @@ extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width / 2 - 1, height: view.frame.width / 2 - 1)
+        CGSize(width: view.frame.width / 2 - 1, height: view.frame.width / 2 - 1)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
+        2
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }

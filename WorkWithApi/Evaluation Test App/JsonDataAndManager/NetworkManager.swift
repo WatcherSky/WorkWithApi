@@ -10,7 +10,10 @@ import UIKit
 
 class NetworkManager {
     
-    let networkRequest = NetworkRequest()
+    let networkRequest = NetworkRequest.shared
+    static let shared = NetworkManager()
+    
+    private init() {}
     
     func getAlbums(urlString: String, response: @escaping (ResultsData?) -> Void) {    //get Data and decode them
         networkRequest.request(urlString: urlString) { (result) in
@@ -29,7 +32,7 @@ class NetworkManager {
             }
     }
 }
-    
+// Same for Songs. We can use 1 method, i used 2 to separate their (functions) name
     func getSongs(urlString: String, response: @escaping (ResultsData?) -> Void) {
         networkRequest.request(urlString: urlString) { (result) in
             switch result {
@@ -47,5 +50,5 @@ class NetworkManager {
             }
         }
     }
-}    // Same for Songs. We can use 1 method, i used 2 to separate their (functions) name
+}
 

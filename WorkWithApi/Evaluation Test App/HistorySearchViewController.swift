@@ -9,9 +9,9 @@ import UIKit
 
 class HistorySearchViewController: UIViewController {
     //MARK: - Properties
+    @IBOutlet private var tableView: UITableView!
     private var array = UserDefaults.standard.stringArray(forKey: "array")
     private var labelText: String?
-    @IBOutlet private var tableView: UITableView!
     private var timer: Timer?
     
     //MARK: - Life cycle

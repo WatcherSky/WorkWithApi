@@ -9,16 +9,15 @@ import UIKit
 
 class AlbumInfoViewController: UIViewController {
     //MARK: - Properties
-    private let networkManager = NetworkManager()
-    private var resultsData: ResultsData? = nil
-    private let headerForTable = "AlbumSongs"
-    private let dateFormatter = ISO8601DateFormatter()
-    var results: Results?
-    var collectionId: Int = 0 //get collection id from previous screen to make request (didnt get from results to make it more simple) We can see id
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var albumNameLabel: UILabel!
     @IBOutlet private weak var artistNameLabel: UILabel!
     @IBOutlet private weak var releaseDateLabel: UILabel!
+    var results: Results?
+    var collectionId: Int = 0 //get collection id from previous screen to make request (didnt get from results to make it more simple) We can see id
+    private var resultsData: ResultsData? = nil
+    private let headerForTable = "AlbumSongs"
+    private let dateFormatter = ISO8601DateFormatter()  //To get data
     
     //MARK: - Life cycle
     override func viewDidLoad() {
@@ -28,6 +27,7 @@ class AlbumInfoViewController: UIViewController {
         setupLabels()
         getSongs(collectionId: collectionId)
         setupReleaseDate()
+        setupLabelPosition()
     }
     
     //MARK: - Private methods
@@ -50,7 +50,6 @@ class AlbumInfoViewController: UIViewController {
         artistNameLabel.text = "ArtistName: \(artistNameText)"
     }
     
-    
     private func setupReleaseDate() { //formatted release date using dateFormatter
         guard let releaseDateText = results?.releaseDate else {
             return
@@ -58,9 +57,9 @@ class AlbumInfoViewController: UIViewController {
         guard let getDateFromJson = dateFormatter.date(from: releaseDateText) else {
             return
         }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let changedDateFromJson = dateFormatter.string(from: getDateFromJson)
+        let dateFormatterToChange = DateFormatter() // to change to new format
+        dateFormatterToChange.dateFormat = "yyyy-MM-dd"
+        let changedDateFromJson = dateFormatterToChange.string(from: getDateFromJson)
         releaseDateLabel.text = "ReleaseDate: \(changedDateFromJson)"
     }
     
@@ -73,13 +72,12 @@ class AlbumInfoViewController: UIViewController {
     
     private func getSongs(collectionId: Int) { //make request by collection id from previous screen
         let urlId = "https://itunes.apple.com/lookup?id=\(collectionId)&entity=song"
-        networkManager.getSongs(urlString: urlId) { [unowned self] (resultsData) in
+        NetworkManager.shared.getSongs(urlString: urlId) { [unowned self] (resultsData) in
             guard let resultsData = resultsData else {
                 return
             }
             self.resultsData = resultsData
-            let result = ResultsData(results: resultsData.results)
-            let encodedUserDetails = try? JSONEncoder().encode(result)
+            let encodedUserDetails = try? JSONEncoder().encode(resultsData)
             UserDefaults.standard.set(encodedUserDetails, forKey: "HistoryDetails")   //Last to save
             self.tableView.reloadData()
         }
@@ -89,7 +87,7 @@ class AlbumInfoViewController: UIViewController {
 //MARK: - Extension
 extension AlbumInfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return resultsData?.results?.count ?? 0
+        resultsData?.results?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -100,6 +98,6 @@ extension AlbumInfoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return headerForTable
+        headerForTable
     }
 }

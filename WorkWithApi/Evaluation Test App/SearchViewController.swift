@@ -9,7 +9,8 @@ import UIKit
 
 class SearchViewController: UIViewController {
     //MARK: - Properties
-    private let networkManager = NetworkManager()
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     private var resultsData: ResultsData? = nil
     private let defaults = UserDefaults.standard  //use UserDefaults to save data to history tab
     private var editedSearchText = ""  //Use edit search text to escape nil when making request with space
@@ -19,8 +20,6 @@ class SearchViewController: UIViewController {
     private var resultCount = 0
     private var arrayOfDataStruct = [Results]()
     private var arrayOfDataStructSaved = [Results]()
-    @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
@@ -35,7 +34,6 @@ class SearchViewController: UIViewController {
     private func setupSearch() {
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
-        navigationController?.navigationBar.prefersLargeTitles = true
         searchController.obscuresBackgroundDuringPresentation = false
     }
     
@@ -60,7 +58,6 @@ class SearchViewController: UIViewController {
         if searchArray.count > 10 {
             searchArray.removeFirst()
         }
-        defaults.removeObject(forKey: "array")
         defaults.set(searchArray, forKey: "array")
     }
 }
@@ -71,13 +68,13 @@ extension SearchViewController: UISearchBarDelegate {
             return
         }
         editedSearchText = text.replacingOccurrences(of: " ", with: "+")
-        
         saveHistory(historyWork: text)
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
         let urlString = "https://itunes.apple.com/search?term=\(editedSearchText)&media=music&entity=album" //make request  and sort albums
-        networkManager.getAlbums(urlString: urlString) { [unowned self] (resultsData) in  //get Data, parse it, then pass it to custom array and sort
+        
+        NetworkManager.shared.getAlbums(urlString: urlString) { [unowned self] (resultsData) in  //get Data, parse it, then pass it to custom array and sort
             guard let resultsData = resultsData else {
                 return
             }
@@ -98,7 +95,7 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayOfDataStructSaved.count
+        arrayOfDataStructSaved.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -118,14 +115,14 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width / 2 - 1, height: view.frame.width / 2 - 1)
+        CGSize(width: view.frame.width / 2 - 1, height: view.frame.width / 2 - 1)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
+        2
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }
