@@ -50,7 +50,7 @@ class SearchViewController: UIViewController {
     }
     
     private func saveHistory(historyWork: String) {
-        history = UserDefaults.standard.stringArray(forKey: "array")
+        history = defaults.stringArray(forKey: "array")
         if let history = history {
             searchArray = history
         }
