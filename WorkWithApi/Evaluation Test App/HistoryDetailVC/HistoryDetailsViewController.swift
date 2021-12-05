@@ -17,7 +17,6 @@ class HistoryDetailsViewController: UIViewController {
     private var resultsData: ResultsData? = nil
     private let headerForTable = "AlbumSong"
     private let defaults = UserDefaults.standard
-    private let dateFormatter = ISO8601DateFormatter()  //To get data
     
     //MARK: - View Cycle
     override func viewDidLoad() {
@@ -60,7 +59,17 @@ class HistoryDetailsViewController: UIViewController {
         artistNameLabel.text = "ArtistName: \(artistNameText)"
     }
     
-    private func setupReleaseDate() { //formatted release date using dateFormatter
+    private func setupLabelPosition() {  //setup positions
+        albumNameLabel.frame = CGRect(x: 20, y: view.frame.height / 5 - 40, width: view.frame.width - 20, height: 80)
+        artistNameLabel.frame = CGRect(x: 20, y: view.frame.height / 5 + 50, width: view.frame.width - 20, height: 40)
+        releaseDateLabel.frame = CGRect(x: 20, y: view.frame.height / 5 + 100, width: view.frame.width - 20, height: 40)
+        tableView.frame = CGRect(x: 0, y: view.frame.height / 5 + 150, width: view.frame.width, height: view.frame.height - view.frame.height / 5 + 150)
+    }
+}
+//MARK: - Extensions
+extension HistoryDetailsViewController {
+    func setupReleaseDate() { //formatted release date using dateFormatter
+        let dateFormatter = ISO8601DateFormatter()
         guard let releaseDateText = results?.releaseDate else {
             return
         }
@@ -72,15 +81,8 @@ class HistoryDetailsViewController: UIViewController {
         let changedDateFromJson = dateFormatterToChange.string(from: getDateFromJson)
         releaseDateLabel.text = "ReleaseDate: \(changedDateFromJson)"
     }
-    
-    private func setupLabelPosition() {  //setup positions
-        albumNameLabel.frame = CGRect(x: 20, y: view.frame.height / 5 - 40, width: view.frame.width - 20, height: 80)
-        artistNameLabel.frame = CGRect(x: 20, y: view.frame.height / 5 + 50, width: view.frame.width - 20, height: 40)
-        releaseDateLabel.frame = CGRect(x: 20, y: view.frame.height / 5 + 100, width: view.frame.width - 20, height: 40)
-        tableView.frame = CGRect(x: 0, y: view.frame.height / 5 + 150, width: view.frame.width, height: view.frame.height - view.frame.height / 5 + 150)
-    }
 }
-    //MARK: - Extensions
+
 extension HistoryDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         resultsData?.results?.count ?? 0

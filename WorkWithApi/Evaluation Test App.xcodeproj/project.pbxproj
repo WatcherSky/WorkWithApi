@@ -145,6 +145,48 @@
 			path = "Evaluation Test AppTests";
 			sourceTree = "<group>";
 		};
+		E7807DCA2754E18F008B9516 /* SearchVC */ = {
+			isa = PBXGroup;
+			children = (
+				E7AB627F2708BA8D007600DD /* SearchViewController.swift */,
+				E76CA173270B41EA002D0635 /* SearchCollectionViewCell.swift */,
+			);
+			path = SearchVC;
+			sourceTree = "<group>";
+		};
+		E7807DCD2754E33E008B9516 /* HistorySearchVC */ = {
+			isa = PBXGroup;
+			children = (
+				E7AB62822708BA9A007600DD /* HistorySearchViewController.swift */,
+				E76CA165270B09FD002D0635 /* HistoryCollectionViewCell.swift */,
+			);
+			path = HistorySearchVC;
+			sourceTree = "<group>";
+		};
+		E7807DD02754E394008B9516 /* HistoryDetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				E70C6F0127268E1D008B2E20 /* HistoryDetailsViewController.swift */,
+			);
+			path = HistoryDetailVC;
+			sourceTree = "<group>";
+		};
+		E7807DD32754E3A4008B9516 /* AlbumInfoVC */ = {
+			isa = PBXGroup;
+			children = (
+				E76CA17F270B6BD4002D0635 /* AlbumInfoViewController.swift */,
+			);
+			path = AlbumInfoVC;
+			sourceTree = "<group>";
+		};
+		E7807DD62754E3B0008B9516 /* AlbumsVC */ = {
+			isa = PBXGroup;
+			children = (
+				E76CA1262709FA72002D0635 /* AlbumsViewController.swift */,
+			);
+			path = AlbumsVC;
+			sourceTree = "<group>";
+		};
 		E7AB625827089CEB007600DD = {
 			isa = PBXGroup;
 			children = (
@@ -170,16 +212,14 @@
 			children = (
 				E76CA1292709FC3D002D0635 /* AppAndSceneDelegates */,
 				E76CA1242709F623002D0635 /* Extensions */,
-				E7AB627F2708BA8D007600DD /* SearchViewController.swift */,
-				E76CA17F270B6BD4002D0635 /* AlbumInfoViewController.swift */,
-				E7AB62822708BA9A007600DD /* HistorySearchViewController.swift */,
-				E76CA1262709FA72002D0635 /* AlbumsViewController.swift */,
-				E70C6F0127268E1D008B2E20 /* HistoryDetailsViewController.swift */,
+				E7807DCA2754E18F008B9516 /* SearchVC */,
+				E7807DD32754E3A4008B9516 /* AlbumInfoVC */,
+				E7807DCD2754E33E008B9516 /* HistorySearchVC */,
+				E7807DD62754E3B0008B9516 /* AlbumsVC */,
+				E7807DD02754E394008B9516 /* HistoryDetailVC */,
 				E76CA12A2709FC81002D0635 /* JsonDataAndManager */,
-				E7AB626A27089CEB007600DD /* Main.storyboard */,
-				E76CA173270B41EA002D0635 /* SearchCollectionViewCell.swift */,
-				E76CA165270B09FD002D0635 /* HistoryCollectionViewCell.swift */,
 				E76CA17C270B68BA002D0635 /* SupportingFiles */,
+				E7AB626A27089CEB007600DD /* Main.storyboard */,
 				E7AB627227089CF1007600DD /* Info.plist */,
 			);
 			path = "Evaluation Test App";

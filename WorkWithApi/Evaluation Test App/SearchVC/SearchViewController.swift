@@ -48,8 +48,10 @@ class SearchViewController: UIViewController {
         }
         return sortedArrayScore
     }
-    
-    private func saveHistory(historyWork: String) {
+}
+//MARK: - Extensions
+extension SearchViewController {
+    func saveHistory(historyWork: String) {
         history = defaults.stringArray(forKey: "array")
         if let history = history {
             searchArray = history
@@ -61,7 +63,7 @@ class SearchViewController: UIViewController {
         defaults.set(searchArray, forKey: "array")
     }
 }
-//MARK: - Extensions
+
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {        
         guard let text = searchBar.text else {
@@ -92,7 +94,6 @@ extension SearchViewController: UISearchBarDelegate {
         }
     }
 }
-
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         arrayOfDataStructSaved.count
